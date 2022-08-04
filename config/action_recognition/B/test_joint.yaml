@@ -1,8 +1,8 @@
 # feeder
 feeder: feeders.feeder.Feeder
 test_feeder_args:
-  data_path: ./data/paper_action/B/test_data_joint.npy
-  label_path: ./data/paper_action/B/test_label.pkl
+  data_path: ./data/recognition/B/test_data_joint.npy
+  label_path: ./data/recognition/B/test_label.pkl
   debug: False
 
 # model
@@ -23,5 +23,5 @@ device: 1
 test_batch_size: 16
 weights: work_dir/paper/B/weights/weights-17-1479.pt
 
-work_dir: ./eval/paper_action/paper_action_joint/
+work_dir: ./eval/recognition/recognition_joint/
 save_score: True

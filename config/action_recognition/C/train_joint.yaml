@@ -1,16 +1,16 @@
 
-work_dir: ./work_dir/paper_action/B/msg3d_joint
+work_dir: ./work_dir/recognition/B/msg3d_joint
 
 # feeder
 feeder: feeders.feeder.Feeder
 train_feeder_args:
-  data_path: ./data/paper_action/C/train_data_joint.npy
-  label_path: ./data/paper_action/C/train_label.pkl
+  data_path: ./data/recognition/C/train_data_joint.npy
+  label_path: ./data/recognition/C/train_label.pkl
   debug: False
 
 test_feeder_args:
-  data_path: ./data/paper_action/C/valid_data_joint.npy
-  label_path: ./data/paper_action/C/valid_label.pkl
+  data_path: ./data/recognition/C/valid_data_joint.npy
+  label_path: ./data/recognition/C/valid_label.pkl
 
 # model
 model: model.msg3d.Model

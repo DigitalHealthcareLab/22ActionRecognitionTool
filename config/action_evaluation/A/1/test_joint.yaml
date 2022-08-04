@@ -1,8 +1,8 @@
 # feeder
 feeder: feeders.feeder.Feeder
 test_feeder_args:
-  data_path: ./data/recognition/A/test_data_joint.npy
-  label_path: ./data/recognition/A/test_label.pkl
+  data_path: ./data/evaluation/A/1/test_data_joint.npy
+  label_path: ./data/evaluation/A/1/test_label.pkl
   debug: False
 
 # model
@@ -21,7 +21,7 @@ model_args:
 phase: test
 device: 1
 test_batch_size: 16
-weights: work_dir/paper/A/weights/weights-21-3003.pt
+weights: work_dir/paper/A/1/weights/weights-21-3003.pt
 
-work_dir: ./eval/recognition/recognition_joint/
+work_dir: ./eval/evaluation/evaluation_joint/
 save_score: True

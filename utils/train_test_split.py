@@ -81,7 +81,7 @@ def main_evaluation(path):
         for act in range(1,5):
             for use in ['train', 'test', 'valid']:
                     os.makedirs(f'{path}/{age}/{act}/{use}', exist_ok = True)
-            child_list = list(set([f.split('/')[-1].split('_')[0] for f in glob.glob(f'{path}/{age}/{act}/*.json')]))
+            child_list = list(set([f.split('/')[-1].split('_')[0] for f in glob.glob(f'{path}/{age}/*GMS_{act}_*.json')]))
 
             A = []
             B = []
@@ -89,7 +89,7 @@ def main_evaluation(path):
             D = []
 
             for child in child_list:
-                file = glob.glob(f'{path}/{age}/{act}/{child}*.json')[0]
+                file = glob.glob(f'{path}/{age}/{child}_GMS_{act}*.json')[0]
 
                 with open(file, 'rb') as f:
                     data = json.load(f)
@@ -110,17 +110,17 @@ def main_evaluation(path):
             for X in [A,B,C,D]:
                 train, test, valid = split(X)
                 for child in train:
-                    file_list = glob.glob(f'{path}/{age}/{act}/{child}*.json')
+                    file_list = glob.glob(f'{path}/{age}/{child}_GMS_{act}*.json')
                     for f in file_list:
                         target = os.path.join(f'{path}/{age}/{act}/', 'train',f.split('/')[-1])
                         shutil.move(f, target)
                 for child in test:
-                    file_list = glob.glob(f'{path}/{age}/{act}/{child}*.json')
+                    file_list = glob.glob(f'{path}/{age}/{child}_GMS_{act}*.json')
                     for f in file_list:
                         target = os.path.join(f'{path}/{age}/{act}/', 'test',f.split('/')[-1])
                         shutil.move(f, target)
                 for child in valid:
-                    file_list = glob.glob(f'{path}/{age}/{act}/{child}*.json')
+                    file_list = glob.glob(f'{path}/{age}/{child}_GMS_{act}*.json')
                     for f in file_list:
                         target = os.path.join(f'{path}/{age}/{act}/', 'valid',f.split('/')[-1])
                         shutil.move(f, target)
