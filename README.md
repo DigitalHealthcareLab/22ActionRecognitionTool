@@ -16,7 +16,7 @@
       year={2020}
     }
 
-More details of model are in MS-G3D github : https://github.com/kenziyuliu/MS-G3D
+More details about model are in MS-G3D github : https://github.com/kenziyuliu/MS-G3D
 
 -------------
 ## Prerequisite
