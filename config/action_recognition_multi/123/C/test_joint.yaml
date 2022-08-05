@@ -1,0 +1,27 @@
+# feeder
+feeder: feeders.feeder.Feeder
+test_feeder_args:
+  data_path: ./data/recognition_multi/123/C/test_data_joint.npy
+  label_path: ./data/recognition_multi/123/C/test_label.pkl
+  debug: False
+
+# model
+model: model.msg3d.Model
+model_args:
+  num_class: 4
+  num_point: 25
+  num_person: 1
+  in_channels: 3
+  num_gcn_scales: 13
+  num_g3d_scales: 6
+  graph: graph.body_25.AdjMatrixGraph
+
+
+# test
+phase: test
+device: 1
+test_batch_size: 16
+weights: work_dir/paper/123/C/weights/weights-17-1479.pt
+
+work_dir: ./eval/recognition_multi/recognition_multi_joint/
+save_score: True
