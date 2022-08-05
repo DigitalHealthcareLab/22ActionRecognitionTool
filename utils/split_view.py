@@ -36,16 +36,17 @@ def split_recognition(data_path, out_path):
 
     for view in view_list:
         for age in age_list:
-            print(f'View: {view}, Age: {age} start.')
-            target_path = f"{out_path}/{view}/{age}/"
-            if not os.path.exists(target_path):
-                os.makedirs(target_path)
+            for use in ['train','valid','test']:
+                print(f'View: {view}, Age: {age} start.')
+                target_path = f"{out_path}/{view}/{age}/{use}"
+                if not os.path.exists(target_path):
+                    os.makedirs(target_path)
 
-            file_list = glob.glob(f'{data_path}/{age}/*')
+                file_list = glob.glob(f'{data_path}/{age}/{use}/*')
 
-            for file in tqdm(file_list):
-                if file.split('_')[-1].split('.')[0] in view:
-                    shutil.copy(file, f"{target_path}/{file.split('/')[-1]}")
+                for file in tqdm(file_list):
+                    if file.split('_')[-1].split('.')[0] in view:
+                        shutil.copy(file, f"{target_path}/{file.split('/')[-1]}")
         
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

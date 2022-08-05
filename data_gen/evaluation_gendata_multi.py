@@ -178,18 +178,19 @@ if __name__ == '__main__':
         '--out_folder', default='../data/output')
     arg = parser.parse_args()
 
-    
+    view_list = ['123', '12', '13', '23', '1', '2', '3']
     age_list = ['A','B','C']
     part = ['train', 'valid', 'test']
     for view in view_list:
         for age in age_list:
+            for act in range(1,5):
                 for p in part:
                     print(f'Age: {age}, Use: {p}')
-                    if not os.path.exists(f'{arg.out_folder}/{age}/'):
-                        os.makedirs(f'{arg.out_folder}/{age}/')
-                    data_path = '{}/{}/{}'.format(arg.data_path, age, p)
-                    label_path = '{}/{}/{}_label.json'.format(arg.data_path, age, p)
-                    data_out_path = '{}/{}/{}_data_joint.npy'.format(arg.out_folder, age, p)
-                    label_out_path = '{}/{}/{}_label.pkl'.format(arg.out_folder, age, p)
+                    if not os.path.exists(f'{arg.out_folder}/{view}/{age}/{act}'):
+                        os.makedirs(f'{arg.out_folder}/{view}/{age}/{act}')
+                    data_path = '{}/{}/{}/{}/{}'.format(arg.data_path, view, age, act, p)
+                    label_path = '{}/{}/{}/{}/{}_label.json'.format(arg.data_path, view, age, act, p)
+                    data_out_path = '{}/{}/{}/{}/{}_data_joint.npy'.format(arg.out_folder, view, age, act, p)
+                    label_out_path = '{}/{}/{}/{}/{}_label.pkl'.format(arg.out_folder, view, age, act, p)
 
                     gendata(data_path, label_path, data_out_path, label_out_path)

@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 
 
-def make_label_action(path):
+def make_label_recognition(path):
     for age in ['A', 'B', 'C']:
         for use in ['train', 'test','valid']:
             print(f'Age {age} {use}')
