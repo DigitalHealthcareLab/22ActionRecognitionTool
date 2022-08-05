@@ -32,14 +32,29 @@ After install the torch, install others.
 
         git clone https://github.com/DigitalHealthcareLab/22ActionRecognitionTool.git
     
-2. Download the raw data from GigaDB and put them into 'data/eval_raw' directory by age.
-    
-        mkdir data/eval_raw
-        mkdir data/eval_raw/A data/eval_raw/B data/eval_raw/C
-    
-3. Run utils/to_action.py to make action recognition dataset
+2. Download the raw data:
 
-    If you don't want action recognition, skip this step.
+    Skeleton coordinates data 
+    
+    Age group A: https://drive.google.com/file/d/1mz76H9JAqcKAESGbhcIS_545jD9RtZak/view?usp=sharing
+    
+    Age group B: https://drive.google.com/file/d/1bJsfE1qzTDHvb2YLmLKnGQuKGGP0AM8Z/view?usp=sharing
+    
+    Age group C: https://drive.google.com/file/d/15oE8yif2GE71b5llicAtPcp7HyRFOkA9/view?usp=sharing
+    
+    Skeleton video
+    
+    Age group A: https://drive.google.com/file/d/1vdU9OuV-ZLltznuRfQP9cQDeG-O3vQ69/view?usp=sharing
+    
+    Age group B: https://drive.google.com/file/d/1SPQZENWi3GiDvFgsE8gwjpiqJyAS0wyQ/view?usp=sharing
+    
+    Age group C: https://drive.google.com/file/d/156Mysk50WZEtQUJt2DFw-_evH9z22oNK/view?usp=sharing
+
+3. Put them into 'data/eval_raw' directory and unzip.
+    
+4. Run utils/to_action.py to make action recognition dataset
+
+    If you don't need action recognition, skip this step.
 
         cd utils
         python3 to_action.py --data_path ../data/eval_raw --out_path ../data/recog_raw
@@ -97,4 +112,33 @@ After install the torch, install others.
     After train, fix the weight path in config file and run main.py again.
     
         python3 main.py --config config/action_recognition/[age]/test_joint.yaml --work-dir test_result/recognition/[age]
-        
+
+---------------
+### Paper Replication
+
+If you want to replicate our experiment, follow this.
+    
+- Data preprocessing
+
+        cd utils
+        python3 train_test_split.py --path ../data/recog_raw --model recognition
+        python3 split_view.py --data_path ../data/recog_raw --out_path ../data/recog_multi_raw --model recognition
+        python3 make_label_multi.py --path ../data/recog_multi_raw --model recognition
+        cd ../data_gen
+        python3 recognition_gendata_multi.py --data_path ../data/recog_multi_raw --out_folder ../data/recognition_multi
+    
+- Train
+
+    Run train_A.sh, train_B.sh, train_C.sh one by one.
+    
+    It will train all view settings automatically.
+    
+        bash train_A.sh
+        bash train_B.sh
+        bash train_C.sh
+
+- Test
+
+    After train, fix the weight path in config file and run main.py.
+    
+        python3 main.py --config config/action_recognition_multi/[view]/[age]/test_joint.yaml --work-dir test_result/recognition_multi/[view]/[age]
