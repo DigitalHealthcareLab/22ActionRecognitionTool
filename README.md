@@ -117,10 +117,25 @@ After install the torch, install others.
 ### Paper Replication
 
 If you want to replicate our experiment, follow this.
+
+- Data download
+
+    This is the filtered version of our dataset that has all three views.
+    
+    Data with only two or one view has been removed.
+
+    Age group A: https://drive.google.com/file/d/1Qaj3OBg2JuoYMUGMP5DaGZakQuFlVJTM/view?usp=sharing
+    
+    Age group B: https://drive.google.com/file/d/1hLadvFISnWc_yNaV7rn-8FEnA4mjDplH/view?usp=sharing
+    
+    Age group C: https://drive.google.com/file/d/1KUNvMyaUsWj2LdjQl-mmW2Z9JwgVUxas/view?usp=sharing
+    
+    Unzip and put these into 'data/filtered_raw'.
     
 - Data preprocessing
 
         cd utils
+        python3 to_action.py --data_path ../data/filtered_raw --out_path ../recog_filtered_raw
         python3 train_test_split.py --path ../data/recog_raw --model recognition
         python3 split_view.py --data_path ../data/recog_raw --out_path ../data/recog_multi_raw --model recognition
         python3 make_label_multi.py --path ../data/recog_multi_raw --model recognition
