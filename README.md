@@ -46,9 +46,9 @@ After install the torch, install others.
     
     Age group A: https://drive.google.com/file/d/1KYbY1FWY1Cl4P8CnxdTtFUNhd55Yr1UM/view?usp=sharing
     
-    Age group B: https://drive.google.com/file/d/1SPQZENWi3GiDvFgsE8gwjpiqJyAS0wyQ/view?usp=sharing
+    Age group B: https://drive.google.com/file/d/1-2WvMgR4BTwIffb7aLdL1R0RNast3qpT/view?usp=sharing
     
-    Age group C: https://drive.google.com/file/d/156Mysk50WZEtQUJt2DFw-_evH9z22oNK/view?usp=sharing
+    Age group C: https://drive.google.com/file/d/1Yqj3KEX6i2ykoH7EjJhP7veycZpiI36_/view?usp=sharing
 
 3. Put them into 'data/eval_raw' directory and unzip.
     
