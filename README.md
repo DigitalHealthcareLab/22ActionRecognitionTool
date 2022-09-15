@@ -44,7 +44,7 @@ After install the torch, install others.
     
     Skeleton video
     
-    Age group A: https://drive.google.com/file/d/1vdU9OuV-ZLltznuRfQP9cQDeG-O3vQ69/view?usp=sharing
+    Age group A: https://drive.google.com/file/d/1KYbY1FWY1Cl4P8CnxdTtFUNhd55Yr1UM/view?usp=sharing
     
     Age group B: https://drive.google.com/file/d/1SPQZENWi3GiDvFgsE8gwjpiqJyAS0wyQ/view?usp=sharing
     
