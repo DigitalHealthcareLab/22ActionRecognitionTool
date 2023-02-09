@@ -30,10 +30,10 @@ optimizer: SGD
 weight_decay: 0.001
 base_lr: 0.01
 #base_lr: 0.01
-step: [20, 35, 45]
+step: [50, 100, 150]
 
 # training
-num_epoch: 50
+num_epoch: 200
 # device: [0, 1]
 device: [0, 1]
 # batch_size: 32

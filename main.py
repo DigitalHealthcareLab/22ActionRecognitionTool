@@ -18,7 +18,7 @@ import torch.optim as optim
 from tqdm import tqdm
 from tensorboardX import SummaryWriter
 from torch.optim.lr_scheduler import MultiStepLR
-import apex
+#import apex
 
 from utils import count_params, import_class
 
@@ -257,17 +257,17 @@ class Processor():
         self.best_acc = 0
         self.best_acc_epoch = 0
 
-        if self.arg.half:
-            self.print_log('*************************************')
-            self.print_log('*** Using Half Precision Training ***')
-            self.print_log('*************************************')
-            self.model, self.optimizer = apex.amp.initialize(
-                self.model,
-                self.optimizer,
-                opt_level=f'O{self.arg.amp_opt_level}'
-            )
-            if self.arg.amp_opt_level != 1:
-                self.print_log('[WARN] nn.DataParallel is not yet supported by amp_opt_level != "O1"')
+        # if self.arg.half:
+        #     self.print_log('*************************************')
+        #     self.print_log('*** Using Half Precision Training ***')
+        #     self.print_log('*************************************')
+        #     self.model, self.optimizer = apex.amp.initialize(
+        #         self.model,
+        #         self.optimizer,
+        #         opt_level=f'O{self.arg.amp_opt_level}'
+        #     )
+        #     if self.arg.amp_opt_level != 1:
+        #         self.print_log('[WARN] nn.DataParallel is not yet supported by amp_opt_level != "O1"')
 
         if type(self.arg.device) is list:
             if len(self.arg.device) > 1:
@@ -294,7 +294,7 @@ class Processor():
 
         if self.arg.weights:
             try:
-                self.global_step = int(arg.weights[:-3].split('-')[-1])
+                self.global_step = int(self.arg.weights[:-3].split('-')[-1])
             except:
                 print('Cannot parse global_step from model weights filename')
                 self.global_step = 0
@@ -504,8 +504,9 @@ class Processor():
                 loss = self.loss(output, batch_label) / splits
 
                 if self.arg.half:
-                    with apex.amp.scale_loss(loss, self.optimizer) as scaled_loss:
-                        scaled_loss.backward()
+                    # with apex.amp.scale_loss(loss, self.optimizer) as scaled_loss:
+                    #     scaled_loss.backward()
+                    pass
                 else:
                     loss.backward()
 
