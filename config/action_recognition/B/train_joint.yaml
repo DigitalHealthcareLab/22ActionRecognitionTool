@@ -30,7 +30,7 @@ optimizer: SGD
 weight_decay: 0.003
 base_lr: 0.01
 #base_lr: 0.01
-step: [20, 35, 45]
+step: [20, 30, 40]
 
 # training
 num_epoch: 50

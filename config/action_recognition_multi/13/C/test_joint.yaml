@@ -20,7 +20,7 @@ model_args:
 # test
 phase: test
 device: 1
-test_batch_size: 16
+test_batch_size: 32
 weights: work_dir/paper/13/C/weights/weights-39-2262.pt
 
 work_dir: ./eval/recognition_multi/recognition_multi_joint/

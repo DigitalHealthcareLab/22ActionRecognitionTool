@@ -195,10 +195,11 @@ class MultiGCN(nn.Module):
         
         
         for i in range(1,self.num_view+1):
-            exec(f'self.model{i} = Model(4, num_point, num_person, num_gcn_scales, num_g3d_scales, graph, in_channels)')
+            exec(f'self.model{i} = Model(num_class, num_point, num_person, num_gcn_scales, num_g3d_scales, graph, in_channels)')
             
-        self.fc1 = nn.Linear(4*self.num_view, 60)
+        self.fc1 = nn.Linear(num_class*num_view, 60)
         self.fc2 = nn.Linear(60, num_class)
+        
     
     def forward(self, x):
         N, K, T, V, M = x.size()
@@ -214,9 +215,9 @@ class MultiGCN(nn.Module):
         
 
         out = torch.cat(out_list, 1)
-        out = F.relu(self.fc1(out))
-        out = F.dropout(out, training = self.training)
+        out = F.dropout(self.fc1(out),p=0.5)
         out = self.fc2(out)
+        
 
         return F.log_softmax(out, dim = 1)
 
