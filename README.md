@@ -159,5 +159,5 @@ If you want to replicate our experiment, follow this.
         python3 main.py --config config/action_recognition_multi/[view]/[age]/test_joint.yaml --work-dir test_result/recognition_multi/[view]/[age]
 
 -----------
-Repository Author: Jinyong Kim
-Organization: DHLab, Yonsei University
+- Repository Author: Jinyong Kim
+- Organization: DHLab, Yonsei University
